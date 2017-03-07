@@ -1,5 +1,5 @@
 /**
- * Created by tau on 6/03/17.
+ * Created by Victor Gonzalez on 6/03/17.
  */
 import java.util.Stack;
 public class Hanoi {
@@ -12,16 +12,16 @@ public class Hanoi {
         this.stick2 = new Stack<>();
         this.stick3 = new Stack<>();
         this.moves = 0;
-        for (int i = disk; i > 0; i--){
+        for (int i = disk; i > 0; i--){//here I push all the disk from highest to lowest in the first tower,
             stick1.push(i);
         }
 
-        setDisk((int)Math.pow(2,disk));
+        setDisk(disk);
 
 
 
     }
-    public void printTowers() {
+    public void printTowers() {//This method prints the steps of the solution
         System.out.println("Step " + moves);
         System.out.println("Tower1: " + stick1);
         System.out.println("Tower2: " + stick2);
@@ -31,51 +31,15 @@ public class Hanoi {
     }
 
 
-    public void doHanoi(int disk, Stack stick1 , Stack stick2, Stack stick3) {
-
-        if (disk == 1) {
-            sol(disk);
-
-        }
-        else {
-            doHanoi(disk - 1, stick1, stick2, stick3);
-            System.out.println("Disk " + disk + " from " + stick1 + " to " + stick3);
-            doHanoi(disk - 1, stick1, stick2, stick3);
-        }
-    }
-    public static void main(String[] args) {
-        Hanoi hanoi= new Hanoi(3);
-        //hanoi.doHanoi(hanoi.getDisk(),hanoi.getStick1(),hanoi.getStick2(),hanoi.getStick3());
-        hanoi.printTowers();
-        hanoi.sol(hanoi.getDisk());
-
-    }
-
-    public void sol(int disk){
-        if (disk == 1){
-            printTowers();
-        }
-        else{
-            sol(disk-1);
-            if (stick3.empty() && stick1.size()!=1 || stick3.peek() > stick1.peek() ) {
-                stick3.push(stick1.peek());
-                stick1.pop();
-            }
-            else if(stick2.empty() || stick1.peek() < stick2.peek()){
-                stick2.push(stick1.peek());
-                stick1.pop();
-            }
-            else if (stick2.peek() > stick3.peek()){
-                stick2.push(stick3.peek());
-                    stick3.pop();
-            }
-            else if (stick1.empty() || stick2.peek() < stick1.peek()){
-                stick1.push(stick2.peek());
-                stick2.pop();
+    public void sol(int disk,Stack stick1,Stack stick2, Stack stick3){//This method is the recursive function that moves the disk.
+            if (disk > 0)
+            {
+                sol(disk-1, stick1, stick3, stick2);
+                stick3.push(stick1.pop());//this push the top of the stick 1 and pop the top of the stick 1.
+                printTowers();
+                sol(disk-1, stick2, stick1, stick3);
             }
         }
-        printTowers();
-    }
 
 
     public int getDisk() {
@@ -86,9 +50,6 @@ public class Hanoi {
         return stick1;
     }
 
-    public void setStick1(Stack<Integer> stick1) {
-        this.stick1 = stick1;
-    }
 
     public void setDisk(int disk) {
         this.disk = disk;
@@ -99,23 +60,9 @@ public class Hanoi {
         return stick2;
     }
 
-    public void setStick2(Stack<Integer> stick2) {
-        this.stick2 = stick2;
-    }
 
     public Stack<Integer> getStick3() {
         return stick3;
     }
 
-    public void setStick3(Stack<Integer> stick3) {
-        this.stick3 = stick3;
-    }
-
-    public int getMoves() {
-        return moves;
-    }
-
-    public void setMoves(int moves) {
-        this.moves = moves;
-    }
 }
