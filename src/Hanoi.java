@@ -12,17 +12,17 @@ public class Hanoi {
         this.stick2 = new Stack<>();
         this.stick3 = new Stack<>();
         this.moves = 0;
-        for (int i = disk; i > 0; i--){//here I push all the disk from highest to lowest in the first tower,
+        for (int i = disk; i > 0; i--) {//here I push all the disk from highest to lowest in the first tower,
             stick1.push(i);
         }
 
         setDisk(disk);
 
 
-
     }
+
     public void printTowers() {//This method prints the steps of the solution
-        System.out.println("Step " + moves);
+        System.out.println("\n"+"Step " + moves);
         System.out.println("Tower1: " + stick1);
         System.out.println("Tower2: " + stick2);
         System.out.println("Tower3: " + stick3);
@@ -31,12 +31,12 @@ public class Hanoi {
     }
 
 
-    public void sol(int disk,Stack stick1,Stack stick2, Stack stick3){//This method is the recursive function that moves the disk.
-        if (disk > 0){
-            sol(disk-1, stick1, stick3, stick2);
+    public void sol(int disk, Stack stick1, Stack stick2, Stack stick3) {//This method is the recursive function that moves the disk.
+        if (disk > 0) { // This would make the base case to be disk == 1
+            sol(disk - 1, stick1, stick3, stick2);
             stick3.push(stick1.pop());//this push the top of the stick 1 and pop the top of the stick 1.
             printTowers();
-            sol(disk-1, stick2, stick1, stick3);
+            sol(disk - 1, stick2, stick1, stick3);
         }
     }
 
@@ -59,4 +59,5 @@ public class Hanoi {
     public Stack<Integer> getStick3() {
         return stick3;
     }
+}
 

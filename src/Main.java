@@ -11,8 +11,8 @@ public class Main {
         hanoi.printTowers();
         hanoi.sol(disk,hanoi.getStick1(),hanoi.getStick2(),hanoi.getStick3());
 
-        System.out.println("The number of pieces was: " + n + "\n" +
-                        "The minimum number of movements with that number of pieces is: " + (int)(Math.pow(2, n)-1));
+        System.out.println("The number of pieces was: " + disk + "\n" +
+                        "The minimum number of movements with that number of pieces is: " + (int)(Math.pow(2, disk)-1));
         
     }
 }
