@@ -10,5 +10,6 @@ public class Main {
         Hanoi hanoi= new Hanoi(disk);
         hanoi.printTowers();
         hanoi.sol(disk,hanoi.getStick1(),hanoi.getStick2(),hanoi.getStick3());
+
     }
 }

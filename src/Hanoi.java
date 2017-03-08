@@ -32,8 +32,7 @@ public class Hanoi {
 
 
     public void sol(int disk,Stack stick1,Stack stick2, Stack stick3){//This method is the recursive function that moves the disk.
-            if (disk > 0)
-            {
+            if (disk > 0){
                 sol(disk-1, stick1, stick3, stick2);
                 stick3.push(stick1.pop());//this push the top of the stick 1 and pop the top of the stick 1.
                 printTowers();
