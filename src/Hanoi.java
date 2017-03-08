@@ -41,10 +41,6 @@ public class Hanoi {
     }
 
 
-    public int getDisk() {
-        return disk;
-    }
-
     public Stack<Integer> getStick1() {
         return stick1;
     }
@@ -64,4 +60,3 @@ public class Hanoi {
         return stick3;
     }
 
-}
