@@ -40,11 +40,9 @@ public class Hanoi {
         }
     }
 
-
     public Stack<Integer> getStick1() {
         return stick1;
     }
-
 
     public void setDisk(int disk) {
         this.disk = disk;
@@ -54,7 +52,6 @@ public class Hanoi {
     public Stack<Integer> getStick2() {
         return stick2;
     }
-
 
     public Stack<Integer> getStick3() {
         return stick3;
